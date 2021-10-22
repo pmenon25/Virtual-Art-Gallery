@@ -2,6 +2,8 @@
 
 ### Description 
 
+Welcome to the Virtual Art Gallery, where artists can create exhibitions to showcase their work so that we can all connect with the enriching power of art. We invite you to look around and explore what the virtual gallery has to offer, engage with artists by liking, sharing and commenting on their exhibitions.
+
 ### ScreenShots
 ![screenshot1](https://i.imgur.com/22EBczM.png)
 ![screenshot2](https://i.imgur.com/E67KMWB.png)
