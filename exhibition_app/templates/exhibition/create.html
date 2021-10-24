@@ -2,5 +2,16 @@
 {% block content %}
 
 <h1>Exhibition Create</h1>
-
+	<form method = 'POST' action = '/exhibition/submit/'>
+	    {% csrf_token %}   <!--security feature -->
+	    <label for = 'exhibition_title'>Title:</label>
+	    <input name = 'title'>
+	    <label for = 'artist_name'>Artist_Name:</label>
+	    <input name = 'artist_name'>
+	    <label for = 'description'>Description</label>
+	    <input name = 'description'>
+	    <label for = 'date'>Date</label>
+	    <input name = 'date' type = 'date'>
+	    <button type = 'submit'>Submit</button>
+	</form>
 {% endblock %}
