@@ -1,0 +1,77 @@
+:root {
+    --main-color: #E5E5E5;
+    --seond-color: #000000;
+    --third-color: #ED3833;
+    --fouth--color: #1B16FF;
+    --fifth-color: #0D8C0A;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'DIN Medium', Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-family: 'Nighty DEMO', Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    padding-top: 10px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h2 {
+   font-size: 15px;
+   text-align: center; 
+   text-transform: uppercase;
+   padding: 70px 0px 70px 0px;
+}
+
+#info {
+    color: var(--fouth--color);
+}
+
+#artists {
+    color: var(--fifth-color);
+}
+
+p {
+    padding: 0px 180px 0px 180px;
+    font-size: 12px;
+    font-family:  'DIN', Arial, Helvetica, sans-serif;;
+}
+
+.nav-wrapper li {
+    margin: 5px;
+}
+
+a:link, a:visited, a:hover, a:active {
+    color: var(--seond-color);
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 10px;
+    display: block;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.right li {
+  float: right;
+}
+
+.left li {
+  float: left;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}

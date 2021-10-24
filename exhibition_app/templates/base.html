@@ -13,17 +13,21 @@
     <header class="navbar-fixed">
         <nav>
             <div class="nav-wrapper">
-                <ul>
+                <ul class="left">
                     <li><a href="{% url 'info' %}">Info</a></li>
-                    <li><a href="{% url 'artist' %}">Artists</a></li>
                     {% if user.is_authenticated %}
                       <li><a href="{% url 'logout' %}">Log Out</a></li>
                     {% else %}
                       <li><a href="{% url 'login' %}">Log In</a></li>
                     {% endif %}
                   </ul>
-            </div>
-        </nav>
+                  <ul class="right">
+                      <li><a href="{% url 'artist' %}">Artists</a></li>
+                      <li><a href="{% url 'home' %}">Archive</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <h1>Virtual Art Gallery</h1>
     </header>
     <main class="container">
         {% block content %}
