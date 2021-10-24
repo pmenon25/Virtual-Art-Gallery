@@ -1,5 +1,7 @@
 from django.db import models
 from datetime import date
+from django.urls import reverse
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -8,10 +10,11 @@ class Exhibition(models.Model):
     artist_name = models.CharField(max_length= 100)
     description = models.CharField(max_length=250)
     date = models.DateField()
-# Need to add foregin key for UserID
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self) :
         return f'{self.title} on {self.artist_name} and {self.date}'
+
 
 class Art(models.Model):
 # need to add image
