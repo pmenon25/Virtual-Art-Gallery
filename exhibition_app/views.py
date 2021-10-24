@@ -18,7 +18,7 @@ def artist(request):
 
 def exhibition(request):
   exhibition = Exhibition.objects.filter(user=request.user)
-  return render(request , 'exhibition/prof  ile.html' , {'exhibition' : exhibition})
+  return render(request , 'exhibition/profile.html' , {'exhibition' : exhibition})
   
 def new(request):
   return render (request , 'exhibition/create.html')
