@@ -126,7 +126,7 @@ STATIC_URL = '/static/'
 
 STATIC_URL = '/static/'
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/exhibition/'
 
 # Add this variable to specify where logging out redirects to
 LOGOUT_REDIRECT_URL = '/'
