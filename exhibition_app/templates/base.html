@@ -18,6 +18,7 @@
                     {% if user.is_authenticated %}
                       <li><a href="{% url 'logout' %}">Log Out</a></li>
                     {% else %}
+                    <li><a href = "{% url 'signup' %}">Sign up</li>
                       <li><a href="{% url 'login' %}">Log In</a></li>
                     {% endif %}
                   </ul>
@@ -27,7 +28,6 @@
                     </ul>
                 </div>
             </nav>
-            <h1>Virtual Art Gallery</h1>
     </header>
     <main class="container">
         {% block content %}

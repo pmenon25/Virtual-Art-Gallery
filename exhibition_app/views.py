@@ -33,6 +33,16 @@ def create_exhibition(request):
   )
   return redirect('/exhibition')
 
+def details_exhibition(request , exhibition_id):
+  exhibition = Exhibition.objects.get(id=exhibition_id)
+  return render(request , 'exhibition/details.html' , {'exhibition' : exhibition})
+
+def delete_exhibition(request , exhibition_id):
+  result = Exhibition.objects.get(id=exhibition_id)
+  result.delete()
+  return redirect('/exhibition') 
+
+
 def signup(request):
   error_message = ''
   if request.method == 'POST':
