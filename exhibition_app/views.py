@@ -1,6 +1,5 @@
-from django.shortcuts import render,redirect
-
-from exhibition_app.models import Exhibition
+from django.shortcuts import render, redirect
+from exhibition_app.models import Exhibition, Art 
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 
@@ -15,7 +14,6 @@ def artist(request):
   return render(request, 'artist.html')
 
 # Exhibition view functions
-
 def exhibition(request):
   exhibition = Exhibition.objects.filter(user=request.user)
   return render(request , 'exhibition/profile.html' , {'exhibition' : exhibition})
@@ -51,3 +49,16 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
+
+# Art views functions
+def new_art(request):
+  return render (request , 'exhibition/create.html')
+
+def create_art(request):
+  Art.objects.create(
+    name = request.POST['name'],
+    description = request.POST['description'],
+    exhibition_id = request.exhibition.id,
+    art_img = request.POST['art_img']
+  )
+  return redirect('/exhibition')

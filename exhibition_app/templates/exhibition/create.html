@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Exhibition Create</h1>
+<h2>Exhibition Create</h2>
 	<form method = 'POST' action = '/exhibition/submit/'>
-	    {% csrf_token %}   <!--security feature -->
+	    {% csrf_token %}   
 	    <label for = 'exhibition_title'>Title:</label>
 	    <input name = 'title'>
 	    <label for = 'artist_name'>Artist_Name:</label>
@@ -14,4 +14,7 @@
 	    <input name = 'date' type = 'date'>
 	    <button type = 'submit'>Submit</button>
 	</form>
+
+<h2>The Art</h2>
+
 {% endblock %}

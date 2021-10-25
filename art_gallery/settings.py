@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+# import os for image upload
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -78,13 +78,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'art_exhibition',
-        'USER':'postgres',
-        'PASSWORD':'Gregarious@2528',
-        'HOST':'localhost',
-        'PORT':''
+        # 'USER':'postgres',
+        # 'PASSWORD':'Gregarious@2528',
+        # 'HOST':'localhost',
+        # 'PORT':''
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -123,9 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
 STATIC_URL = '/static/'
-
 LOGIN_REDIRECT_URL = '/exhibition/'
 
 # Add this variable to specify where logging out redirects to
