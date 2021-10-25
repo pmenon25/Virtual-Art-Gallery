@@ -8,7 +8,11 @@ urlpatterns = [
     path('exhibition/new/', views.new_art),
     path('exhibition/submit', views.create_art),
     path('exhibition/' , views.exhibition),
+    path('exhibition/<int:exhibition_id>/' , views.details_exhibition),
     path('exhibition/new/', views.new),
     path('exhibition/submit/' , views.create_exhibition),
+    path('exhibition/<int:exhibition_id>/delete/' , views.delete_exhibition),
+    path('exhibition/<int:exhibition_id>/edit/' , views.edit_exhibition),
+    path('exhibition/<int:exhibition_id>/update/' , views.update_exhibition),
     path('accounts/signup/', views.signup, name='signup'),
 ]

@@ -31,6 +31,31 @@ def create_exhibition(request):
   )
   return redirect('/exhibition')
 
+def details_exhibition(request , exhibition_id):
+  exhibition = Exhibition.objects.get(id=exhibition_id)
+  return render(request , 'exhibition/details.html' , {'exhibition' : exhibition})
+
+def delete_exhibition(request , exhibition_id):
+  result = Exhibition.objects.get(id=exhibition_id)
+  result.delete()
+  return redirect('/exhibition') 
+
+def edit_exhibition(request, exhibition_id):
+  result = Exhibition.objects.get(id=exhibition_id)
+  print('date:',result.date)
+  return render(request , 'exhibition/update.html' , {'exhibition':result})
+
+def update_exhibition(request , exhibition_id):
+  exhibition = Exhibition.objects.get(id=exhibition_id)
+  exhibition.title = request.POST['title']
+  exhibition.artist_name = request.POST['artist_name']
+  exhibition.description = request.POST['description']
+  exhibition.date = request.POST['date']
+  exhibition.user_id = request.user.id
+  exhibition.save()
+  return redirect('/exhibition')
+
+# Signup function
 def signup(request):
   error_message = ''
   if request.method == 'POST':

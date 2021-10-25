@@ -2,6 +2,10 @@
 {% block content %}
 
 <h1>profile</h1>
-
-
+{% for exhibition in exhibition %}
+<a href='/exhibition/{{exhibition.id}}' >{{exhibition.title}}</a>
+{{exhibition.date}}</br>
+<a href = '/exhibition/{{exhibition.id}}/delete'>Delete</a>
+<a href = '/exhibition/{{exhibition.id}}/edit'>Edit</a>
+{% endfor %}
 {% endblock %}
