@@ -19,8 +19,6 @@ class Art(models.Model):
     name = models.CharField(max_length= 100)
     description = models.CharField(max_length= 250)
     exhibition = models.ForeignKey(Exhibition , on_delete=models.CASCADE)
-    art_img = models.ImageField(upload_to='images/')
-    #uploard to will specify which dir the images should reside 
 
     def __str__(self) :
         return f'{self.name} on {self.description} and {self.exhibition}'

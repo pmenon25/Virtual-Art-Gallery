@@ -1,11 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>profile</h1>
-{% for exhibition in exhibition %}
-<a href='/exhibition/{{exhibition.id}}' >{{exhibition.title}}</a>
-{{exhibition.date}}</br>
-<a href = '/exhibition/{{exhibition.id}}/delete'>Delete</a>
-<a href = '/exhibition/{{exhibition.id}}/edit'>Edit</a>
-{% endfor %}
+<h3>Exhibition Index</h3>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Artist Name</th>
+        <th>Description</th>
+        <th>Date</th>
+    </tr>
+    <tr>
+        {% for exhibition in exhibition %}
+        <th><a href='/exhibition/{{exhibition.id}}' >{{exhibition.title}}</a>
+            <a href = '/exhibition/{{exhibition.id}}/edit'>Edit</a>
+            <a href = '/exhibition/{{exhibition.id}}/delete'>Delete</a></th>
+        <th>{{ exhibition.artist_name }}</th>
+        <th>{{ exhibition.description }}</th>
+      <th>{{ exhibition.date }}</th>
+    </tr>
+    {% endfor %}
+</table>
+
 {% endblock %}

@@ -1,3 +1,4 @@
+from .forms import ArtForm
 from django.shortcuts import render, redirect
 from exhibition_app.models import Exhibition, Art 
 from django.contrib.auth import login
@@ -11,7 +12,8 @@ def info(request):
   return render(request, 'info.html')
 
 def artist(request):
-  return render(request, 'artist.html')
+  exhibition = Exhibition.objects.all()
+  return render(request, 'artist.html' , {'exhibition' : exhibition})
 
 # Exhibition view functions
 def exhibition(request):
@@ -33,7 +35,8 @@ def create_exhibition(request):
 
 def details_exhibition(request , exhibition_id):
   exhibition = Exhibition.objects.get(id=exhibition_id)
-  return render(request , 'exhibition/details.html' , {'exhibition' : exhibition})
+  art_form = ArtForm()
+  return render(request , 'exhibition/details.html' , {'exhibition' : exhibition, 'art_form' : art_form})
 
 def delete_exhibition(request , exhibition_id):
   result = Exhibition.objects.get(id=exhibition_id)
@@ -59,31 +62,42 @@ def update_exhibition(request , exhibition_id):
 def signup(request):
   error_message = ''
   if request.method == 'POST':
-    # This is how to create a 'user' form object
-    # that includes the data from the browser
     form = UserCreationForm(request.POST)
     if form.is_valid():
-      # This will add the user to the database
       user = form.save()
-      # This is how we log a user in via code
       login(request, user)
       return redirect('/exhibition')
     else:
       error_message = 'Invalid sign up - try again'
-  # A bad POST or a GET request, so render signup.html with an empty form
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
 
 # Art views functions
-def new_art(request):
-  return render (request , 'exhibition/create.html')
+def add_art(request, exhibition_id):
+  form = ArtForm(request.POST)
+  if form.is_valid():
+    new_art = form.save(commit=False)
+    new_art.exhibition_id = exhibition_id
+    new_art.save()
+  return redirect('details', exhibition_id=exhibition_id)
 
-def create_art(request):
-  Art.objects.create(
-    name = request.POST['name'],
-    description = request.POST['description'],
-    exhibition_id = request.exhibition.id,
-    art_img = request.POST['art_img']
-  )
-  return redirect('/exhibition')
+def delete_art(request , art_id):
+  result = Art.objects.get(id=art_id)
+  result.delete()
+  return redirect(f'/exhibition/{result.exhibition.id}') 
+
+def edit_art(request, art_id):
+  result = Art.objects.get(id=art_id)
+  return render(request , 'art/update.html' , {'art':result})
+
+def update_art(request , art_id):
+  print('hello')
+  art = Art.objects.get(id=art_id)
+  art.name = request.POST['name']
+  art.description = request.POST['description']
+  art.exhibition_id = art.exhibition_id
+  print(art.exhibition_id )
+  art.save()
+  return redirect(f'/exhibition/{art.exhibition_id}')
+ 

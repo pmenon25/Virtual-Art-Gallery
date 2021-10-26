@@ -14,9 +14,8 @@
 }
 
 h1 {
-    font-family: 'Nighty DEMO', Arial, Helvetica, sans-serif;
-    font-size: 50px;
-    padding-top: 10px;
+    font-family: 'Founders Grotesk Bold Italic', Arial, Helvetica, sans-serif;
+    font-size: 30px;
     margin: 0 auto;
     text-align: center;
 }
@@ -26,6 +25,18 @@ h2 {
    text-align: center; 
    text-transform: uppercase;
    padding: 70px 0px 70px 0px;
+}
+
+h3 {
+   font-size: 15px;
+   text-align: center; 
+   text-transform: uppercase;
+   padding: 30px 0px 30px 0px;
+}
+
+h4 {
+  font-size: 12px;
+  padding-left: 10px;
 }
 
 #info {
@@ -74,4 +85,67 @@ footer {
   bottom: 0;
   width: 100%;
   text-align: center;
+}
+
+/* Artists  */
+.artist-list {
+  text-align: center;
+}
+
+.artist-list a {
+  font-size: 5vw;
+}
+
+/* Create Exhibition */
+.flex-parent {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+
+.flex-item {
+  width: 300px;
+  border-bottom: 1px solid var(--seond-color);
+  padding-bottom: 30px;
+}
+
+.flex-item.small {
+  width: 150px;
+}
+
+label {
+  font-size: 10px;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+input, textarea, select {
+  width : 150px;
+  padding: 0;
+  margin: 5px;
+  box-sizing: border-box;
+}
+
+/* Exhibition Index */
+
+table, td, th {
+  border-bottom: 1px solid var(--main-color);  
+}
+
+table, p, th {
+  font-weight: lighter;
+}
+
+table {
+  font-size: 8px;
+  text-align: left;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 50px;
 }

@@ -1,20 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
+<h1>Virtual Art Gallery</h1>
 
-<h2>Exhibition Create</h2>
-	<form method = 'POST' action = '/exhibition/submit/'>
-	    {% csrf_token %}   
-	    <label for = 'exhibition_title'>Title:</label>
-	    <input name = 'title'>
-	    <label for = 'artist_name'>Artist_Name:</label>
-	    <input name = 'artist_name'>
-	    <label for = 'description'>Description</label>
-	    <input name = 'description'>
-	    <label for = 'date'>Date</label>
-	    <input name = 'date' type = 'date' >
-	    <button type = 'submit'>Submit</button>
-	</form>
-
-<h2>The Art</h2>
-
+<div class="flex-container">
+    <div class="flex-parent">
+        <div class="flex-item small"><h4>The Exhibition</h4></div>
+        <div class="flex-item">
+            <form method = 'POST' action = '/exhibition/submit/'>
+                {% csrf_token %}   
+                <label for = 'exhibition_title'>Title</label>
+                <input name = 'title'> <br>
+                <label for = 'artist_name'>Artist Name</label>
+                <input name = 'artist_name'> <br>
+                <label for = 'date'>Date</label>
+                <input name = 'date' type = 'date' > <br>
+        </div>
+        <div class="flex-item">
+            <label for = 'description'>Description</label>
+            <textarea name = 'description'> </textarea><br>
+            <button type = 'submit'>Submit</button>
+	        </form>
+        </div>
+    </div>
+</div>
 {% endblock %}

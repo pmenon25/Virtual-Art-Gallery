@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Virtual Art Gallery</h1>
+	<form method = 'POST' action = '/exhibition/{{art.id}}/update_art/'>
+	    {% csrf_token %}   
+	    <label for = 'name'>Name</label>
+	    <input name = 'name' value = '{{art.name}}'>
+	    <label for = 'description' >Description</label>
+	    <input name = 'description' value = '{{art.description}}'>
+	    <button type = 'submit'>Update</button>
+	</form>
+{% endblock %}
