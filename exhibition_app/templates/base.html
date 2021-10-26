@@ -17,6 +17,8 @@
                     <li><a href="{% url 'info' %}">Info</a></li>
                     {% if user.is_authenticated %}
                       <li><a href="{% url 'logout' %}">Log Out</a></li>
+                     <li><a href="{% url 'newexhibition' %}">New Exhibition</a></li> 
+                     <li><a href="{% url 'exhibitions' %}">Exhibition(s)</a></li> 
                     {% else %}
                     <li><a href = "{% url 'signup' %}">Sign up</li>
                       <li><a href="{% url 'login' %}">Log In</a></li>

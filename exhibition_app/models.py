@@ -15,9 +15,7 @@ class Exhibition(models.Model):
     def __str__(self) :
         return f'{self.title} on {self.artist_name} and {self.date}'
 
-
 class Art(models.Model):
-# need to add image
     name = models.CharField(max_length= 100)
     description = models.CharField(max_length= 250)
     exhibition = models.ForeignKey(Exhibition , on_delete=models.CASCADE)
