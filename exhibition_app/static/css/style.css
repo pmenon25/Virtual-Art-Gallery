@@ -1,69 +1,196 @@
-:root {
+  :root {
     --main-color: #E5E5E5;
     --seond-color: #000000;
     --third-color: #ED3833;
     --fouth--color: #1031b5;
     --fifth-color: #0D8C0A;
-}
+  }
 
-* {
+  * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'DIN Medium', Arial, Helvetica, sans-serif;
-}
+    background-color:rgb(247, 246, 240);
+  }
 
-h1 {
+  h1 {
     font-family: 'Founders Grotesk Bold Italic', Arial, Helvetica, sans-serif;
     font-size: 30px;
     margin: 0 auto;
     text-align: center;
-}
+  }
 
-h2 {
-   font-size: 15px;
-   text-align: center; 
-   text-transform: uppercase;
-   padding: 70px 0px 70px 0px;
-}
+  h2 {
+    font-size: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 70px 0px 70px 0px;
+  }
 
-h3 {
-   font-size: 15px;
-   text-align: center; 
-   text-transform: uppercase;
-   padding: 30px 0px 30px 0px;
-}
+  h3 {
+    font-size: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 30px 0px 30px 0px;
+  }
 
-h4 {
-  font-size: 12px;
-  padding-left: 10px;
-}
+  h4 {
+    font-size: 12px;
+    padding-left: 10px;
+  }
 
-#info {
+  #info {
     color: var(--fouth--color);
-}
+  }
 
-#artists {
+  #artists {
     color: var(--fifth-color);
-}
+  }
 
-p {
+  p {
     padding: 0px 180px 0px 180px;
     font-size: 12px;
-    font-family:  'DIN', Arial, Helvetica, sans-serif;;
-}
+    font-family: 'DIN', Arial, Helvetica, sans-serif;
+    ;
+  }
 
-.nav-wrapper li {
+  .nav-wrapper li {
     margin: 5px;
-}
+  }
 
-a:link, a:visited, a:hover, a:active {
+  a:link, a:visited, a:hover, a:active {
     color: var(--seond-color);
     text-transform: uppercase;
     text-decoration: none;
     font-size: 10px;
     display: block;
-}
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .right li {
+    float: right;
+  }
+
+  .left li {
+    float: left;
+  }
+
+  footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Artists  */
+
+  /* .flex-container {
+    display: flex;
+    justify-content: center;
+  } */
+
+  #artist_name {
+    font-family: 'Founders Grotesk Bold Italic', Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  /* About */
+
+  .info{
+    text-align: center;
+    padding-bottom: 3%;
+    font-style: italic;
+    
+  }
+
+  /* Create Exhibition */
+
+  .flex-parent {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 50px;
+  }
+
+  .flex-item {
+    width: 300px;
+    border-bottom: 1px solid var(--seond-color);
+    padding-bottom: 30px;
+  }
+
+  .flex-item.small {
+    width: 150px;
+  }
+
+  label {
+    font-size: 10px;
+  }
+
+  input, textarea, select {
+    width: 150px;
+    padding: 0;
+    margin: 5px;
+    box-sizing: border-box;
+  }
+
+  /* Exhibition Index */
+
+  table, td, th {
+    border-bottom: 1px solid var(--main-color);
+  }
+
+  table, p, th {
+    font-weight: lighter;
+  }
+
+  table {
+    font-size: 8px;
+    text-align: left;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 50px;
+  }
+
+  /* login */
+
+  .login input{ 
+    width: 20%;
+    padding: 12px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin: 0 auto;
+  }
+  .login{
+    display: flex;
+    justify-content: center;
+  }
+
+  .btn{
+      background-color:rgb(12, 12, 12);
+      color: white;
+      cursor: pointer;
+    
+  }
+  .btn:hover{
+    background-color: white ;
+    color: rgb(12, 12, 12);
+  }
+  label {
+    padding: 12px 12px 12px 0;
+    font-size: 100%;
+    justify-content: right;
+  }
+
 
 ul {
   list-style-type: none;
@@ -288,3 +415,4 @@ letter-spacing: 2.5px;
 main {
   padding-bottom: 60px;
 }
+

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Virtual Art Gallery</h1>
+<h2 id="artists">Artists</h2>
+{% for exhibition in exhibition %}
+<div class="flex-container">
+    <div class='flex-artist' id = 'artist_name'>
+   <a href= '#'>{{exhibition.artist_name}}</a>     
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}
+
