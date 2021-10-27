@@ -19,4 +19,6 @@ urlpatterns = [
     path('exhibition/<int:art_id>/edit_art/' , views.edit_art),
     path('exhibition/<int:art_id>/update_art/' , views.update_art),
     path('accounts/signup/', views.signup, name='signup'),
+
+    path('exhibition/<int:exhibition_id>/add_comment/', views.create_comment, name='add_comment'),
 ]

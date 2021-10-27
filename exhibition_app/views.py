@@ -1,8 +1,11 @@
 from .forms import ArtForm
 from django.shortcuts import render, redirect
-from exhibition_app.models import Exhibition, Art 
+from exhibition_app.models import Exhibition, Art, Comment, Like 
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.views.generic import ListView
+from .forms import CommentForm  
+
 
 # Create your views here.
 def home(request):
@@ -14,6 +17,10 @@ def info(request):
 def artist(request):
   exhibition = Exhibition.objects.all()
   return render(request, 'artist.html' , {'exhibition' : exhibition})
+
+
+
+  
 
 # Exhibition view functions
 def exhibition(request):
@@ -35,8 +42,9 @@ def create_exhibition(request):
 
 def details_exhibition(request , exhibition_id):
   exhibition = Exhibition.objects.get(id=exhibition_id)
+  comment_form = CommentForm()
   art_form = ArtForm()
-  return render(request , 'exhibition/details.html' , {'exhibition' : exhibition, 'art_form' : art_form})
+  return render(request , 'exhibition/details.html' , {'exhibition' : exhibition, 'art_form' : art_form, 'comment_form': comment_form})
 
 def delete_exhibition(request , exhibition_id):
   result = Exhibition.objects.get(id=exhibition_id)
@@ -72,6 +80,24 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
+
+#Comment view functions
+def create_comment(request, exhibition_id):
+  form = CommentForm(request.POST)
+  if form.is_valid():
+    new_comment = form.save(commit=False)
+    new_comment.exhibition_id = exhibition_id
+    new_comment.save()
+  return redirect('details', exhibition_id=exhibition_id)
+
+def delete_comment(request, comment_id):
+  delete = Comment.objects.get(id=comment_id)
+  delete.delete()
+  return redirect(f'/exhibition/{delete.exhibition.id}')
+
+def edit_comment(request, comment_id): 
+  result = Comment.objects.get(id=comment_id)
+  return render(request , 'comment/update.html' , {'comment':result})
 
 # Art views functions
 def add_art(request, exhibition_id):
