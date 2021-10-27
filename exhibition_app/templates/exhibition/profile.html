@@ -1,22 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h3>Exhibition Index</h3>
+<h3>List of Exhibitions</h3>
 <table>
-    <tr>
-        <th>Title</th>
-        <th>Artist Name</th>
-        <th>Description</th>
-        <th>Date</th>
+    <tr class="top-row">
+        <th><p class="index-p">Artist Name</p></th>
+        <th><p class="index-p">Title</p></th>
+        <th><p class="index-p">Description</p></th>
+        <th><p class="index-p">Date</p></th>
+        <th></th>
     </tr>
     <tr>
         {% for exhibition in exhibition %}
-        <th><a href='/exhibition/{{exhibition.id}}' >{{exhibition.title}}</a>
+        <th><p class="index-p">{{exhibition.title}}</p></th>
+        <th><p class="index-p">{{ exhibition.description }}</p></th>
+        <th><p class="index-p">{{ exhibition.date }}</p></th>
+        <th><p class="index-p">{{ exhibition.artist_name }}</p></th>
+        <th><a href = '/exhibition/{{exhibition.id}}' >Add Art</a>
             <a href = '/exhibition/{{exhibition.id}}/edit'>Edit</a>
-            <a href = '/exhibition/{{exhibition.id}}/delete'>Delete</a></th>
-        <th>{{ exhibition.artist_name }}</th>
-        <th>{{ exhibition.description }}</th>
-      <th>{{ exhibition.date }}</th>
+            <a href = '/exhibition/{{exhibition.id}}/delete'>Delete</a>
+        </th>
     </tr>
     {% endfor %}
 </table>
