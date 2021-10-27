@@ -1,6 +1,6 @@
 from .forms import ArtForm
 from django.shortcuts import render, redirect
-from exhibition_app.models import Exhibition, Art, Comment, Like 
+from exhibition_app.models import Exhibition, Art, Comment, Like
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import ListView
@@ -8,7 +8,7 @@ from .forms import CommentForm
 import uuid
 import boto3
 S3_BASE_URL = 'https://s3.ca-central-1.amazonaws.com/'
-BUCKET = 'artexhibition'
+BUCKET = 'exhibitionart'
 
 # Create your views here.
 def home(request):
@@ -100,11 +100,22 @@ def edit_comment(request, comment_id):
 
 # Art views functions
 def add_art(request, exhibition_id):
-  form = ArtForm(request.POST)
+  form = ArtForm(request.POST) 
+  print(form.errors)
   if form.is_valid():
+    print('hello')
     new_art = form.save(commit=False)
+    photo_file = request.FILES.get('image', None)   
+    print(photo_file)
+    if photo_file:
+      s3 = boto3.client('s3')
+      key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+      print("key:" ,key)
+      s3.upload_fileobj(photo_file, BUCKET, key)
     new_art.exhibition_id = exhibition_id
     new_art.save()
+    print
+
   return redirect('details', exhibition_id=exhibition_id)
 
 def delete_art(request , art_id):
@@ -125,7 +136,7 @@ def update_art(request , art_id):
   art.save()
   return redirect(f'/exhibition/{art.exhibition_id}')
 
-# def add_photo(request, art_id):
+# def add_photo(request, art_id , exhibition_id):
 #     photo_file = request.FILES.get('photo-file', None)
 #     print('works!  - 1', photo_file)
 #     if photo_file:
@@ -140,5 +151,5 @@ def update_art(request , art_id):
 #             art=art_id
 #             )
 #         print(art_id)
-#     return redirect(f'/exhibition/{art_id}')
+#     return redirect(f'/exhibition/{exhibition_id}')
  
