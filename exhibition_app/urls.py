@@ -18,7 +18,7 @@ urlpatterns = [
     path('exhibition/<int:art_id>/delete_art/' , views.delete_art),
     path('exhibition/<int:art_id>/edit_art/' , views.edit_art),
     path('exhibition/<int:art_id>/update_art/' , views.update_art),
-    # path('exhibition/<int:art_id>/add_photo/', views.add_photo, name='add_photo'),
+    # path('exhibition/<int:exhibition_id>/add_photo/', views.add_photo, name='add_photo'),
     path('accounts/signup/', views.signup, name='signup'),
 
     path('exhibition/<int:exhibition_id>/add_comment/', views.create_comment, name='add_comment'),

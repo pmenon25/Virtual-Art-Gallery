@@ -76,10 +76,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'art_exhibition',
-        # 'USER':'postgres',
-        # 'PASSWORD':'Ezmoney.124',
-        # 'HOST':'localhost',
-        # 'PORT':''
+        'USER':'postgres',
+        'PASSWORD':'Gregarious@2528',
+        'HOST':'localhost',
+        'PORT':''
     }
 }
 
