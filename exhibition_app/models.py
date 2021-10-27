@@ -23,22 +23,29 @@ class Art(models.Model):
     def __str__(self) :
         return f'{self.name} on {self.description} and {self.exhibition}'
 
-class Photo(models.Model):
-    url = models.CharField(max_length=200)
-    art = models.ForeignKey(Art, on_delete=models.CASCADE)
+# class Photo(models.Model):
+#     url = models.CharField(max_length=200)
+#     art = models.ForeignKey(Art, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return f"Photo for art_id: {self.art_id} @{self.url}"
+#     def __str__(self):
+#         return f"Photo for art_id: {self.art} @{self.url}"
 
 class Comment(models.Model):
-    comment = models.CharField(max_length=250)
+    name = models.CharField(max_length=80, default='name')
+    comment = models.TextField()
+    created = models.DateTimeField(auto_now_add=True) 
+    updated = models.DateTimeField(auto_now=True) 
     exhibition = models.ForeignKey(Exhibition , on_delete=models.CASCADE)
+    active = models.BooleanField(default=True) 
+
+class Meta: 
+    ordering = ['created',] 
 
     def __str__(self):
-        return f'{self.comment}on {self.exhibition}'
+        return f'{self.name}on {self.comment} and {self.exhibition}'
 
-class Likes (models.Model):
-    likes = models.IntegerField()
+class Like (models.Model):
+    likes = models.IntegerField(default=0)
     exhibition = models.ForeignKey(Exhibition , on_delete=models.CASCADE)
 
     def __str__(self):
