@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Virtual Art Gallery</title>
+        <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    </head>
+    <body>
+        <section id="header">
+            <h1>Virtual Art Gallery</h1>
+            <nav>
+                <div class="nav-wrapper">
+                    <ul class="left">
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}">Log Out</a></li>
+                        <li><a href="{% url 'newexhibition' %}">New Exhibit<a></li> 
+                            <li><a href="{% url 'exhibitions' %}">Exhibit(s)</a></li> 
+                            {% else %}
+                            <li><a href = "{% url 'signup' %}">Sign up</li>
+                                <li><a href="{% url 'login' %}">Log In</a></li>
+                                {% endif %}
+                            </ul>
+                            <ul class="right">
+                                <li><a href="{% url 'about' %}">About</a></li>
+                                <li><a href="{% url 'artist' %}">Artists</a></li>
+                                <!-- <li><a href="{% url 'home' %}">Archive</a></li> -->
+                            </ul>
+                        </div>
+                    </nav>
+                       
+                        <div class="text-box"> 
+                            <h3>More Art Less Everything!</h3>
+                        </div>
+            </section>
+                
+                <main>
+                    <h2 id="info">About</h2>
+                        <div class="about-text" ><p>We want art to be accessible to everyone!</p></div>
+                        <br>
+                        <div class="about-text">
+                            <p>To move closer to that vision we have created a virtual art gallery
+                            that helps artists share their art around the world. Come here to 
+                            immerse yourself and discover fine art, we believe that the process of 
+                            viewing art can be transformed through online exhibitions. That's why
+                            we're dedicated to building an inspiring, welcoming experience that 
+                            connects collectors with the artists and artworks they love.</p>
+                        </div>
+                    </main>
+</body>
+</html>
