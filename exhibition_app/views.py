@@ -1,8 +1,11 @@
 from django.shortcuts import render,redirect
 
-from exhibition_app.models import Exhibition
+from exhibition_app.models import Exhibition, Art, Comment, Like
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.views.generic import ListView
+from .forms import CommentForm  
+
 
 # Create your views here.
 def home(request):
@@ -13,6 +16,10 @@ def info(request):
 
 def artist(request):
   return render(request, 'artist.html')
+
+
+
+  
 
 # Exhibition view functions
 
@@ -51,3 +58,22 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
+
+#Comment view functions
+def create_comment(request, exhibition_id):
+  form = CommentForm(request.POST),
+  if form.is_valid():
+    new_comment = form.save(commit=False)
+    new_comment.exhibition_id = exhibition_id
+    new_comment.save()
+  return redirect('/exhibition', exhibition_id=exhibition_id)
+
+def delete_comment(request, comment_id):
+  delete = Comment.objects.get(id=comment_id)
+  delete.delete()
+  return redirect(f'/exhibition/{delete.exhibition.id}')
+
+def edit_comment(request, comment_id): 
+  result = Comment.objects.get(id=comment_id)
+  return render(request , 'comment/update.html' , {'comment':result})
+
