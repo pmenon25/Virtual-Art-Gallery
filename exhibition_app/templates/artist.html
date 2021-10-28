@@ -1,20 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 <h3 id="artists">Artists</h3>
-
 <canvas></canvas>
-
 <section class="artists-section">
     <div class="artists">
         {% for exhibition in exhibition %}
        <ul>   
-           <a class="artist-links" href= '#'><li>{{exhibition.artist_name}}</li></a>     
+           <a class="artist-links" href= '/artists/{{exhibition.id}}/profile'><li>{{exhibition.artist_name}}</li></a>     
         </ul>
         {% endfor %}
     </div>
-    
 </section>
-
 <script src="/static/css/js/app.js"></script>
 {% endblock %}
 
