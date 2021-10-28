@@ -21,6 +21,7 @@ def artist(request):
   exhibition = Exhibition.objects.all()
   return render(request, 'artist.html' , {'exhibition' : exhibition})
 
+
 # Exhibition view functions
 def exhibition(request):
   exhibition = Exhibition.objects.filter(user=request.user)

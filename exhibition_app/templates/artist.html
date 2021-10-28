@@ -5,7 +5,7 @@
 {% for exhibition in exhibition %}
 <div class="flex-container">
     <div class='flex-artist' id = 'artist_name'>
-   <a href= '#'>{{exhibition.artist_name}}</a>     
+   <a href= '/artists/{{exhibition.id}}/profile'>{{exhibition.artist_name}}</a>     
     </div>
 </div>
 {% endfor %}
