@@ -8,6 +8,8 @@
         <th>Artist Name</th>
         <th>Description</th>
         <th>Date</th>
+        <th>Comments</th>
+        
     </tr>
     <tr>
         {% for exhibition in exhibition %}
@@ -17,8 +19,32 @@
         <th>{{ exhibition.artist_name }}</th>
         <th>{{ exhibition.description }}</th>
       <th>{{ exhibition.date }}</th>
+      <th><form action="" method="POST">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <input type="submit" class="btn" value="Add Comment">
+      </form>
+          {% for com in exhibition.comment_set.all %}
+          
+        {{com.name}}
+            <a href = '/exhibition/{{comment.id}}/edit_comment'>Edit</a>
+            <a href = '/exhibition/{{comment.id}}/delete_comment'>Delete</a>
+        
+        <li>{{com.comment}}{{com.created}}</li>
+        
+        
+        {% endfor %}
+    </th>
+      
     </tr>
     {% endfor %}
-</table>
+
+Comment!
+
+
+
+    
+      
+      
 
 {% endblock %}

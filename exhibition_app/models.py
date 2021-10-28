@@ -29,7 +29,7 @@ class Comment(models.Model): #add datefield
     created = models.DateTimeField(auto_now_add=True) 
     updated = models.DateTimeField(auto_now=True) 
     exhibition = models.ForeignKey(Exhibition , on_delete=models.CASCADE)
-    active = models.BooleanField(default=True) 
+     
 
 
     class Meta: 

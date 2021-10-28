@@ -11,48 +11,22 @@ The Art
     <input type="submit" class="btn" value="Add Art">
 </form>
 
-Comment!
-<form action="{% url 'add_comment' exhibition.id %}" method="POST">
-  {% csrf_token %}
-  {{ comment_form.as_p }}
-  <input type="submit" class="btn" value="Add Comment">
-</form>
-
 
     <table>
       <thead>
         <tr><th>Name</th><th>Description</th></tr>
       </thead>
       <tbody>
-        {% for com in exhibition.comment_set.all %}
-          <tr>
-            <td>{{com.name}}
-                <a href = '/exhibition/{{comment.id}}/edit_art'>Edit</a>
-                <a href = '/exhibition/{{comment.id}}/delete_art'>Delete</a>
-            </td>
-            <td>{{com.comment}}{{com.created}}</td>
-            
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-
-    <table>
-      <thead>
-        <tr><th>Name</th><th>Comment</th></tr>
-      </thead>
-      <tbody>
         {% for art in exhibition.art_set.all %}
           <tr>
             <td>{{art.name}}
-                <a href = '/exhibition/{{comment.id}}/edit_comment'>Edit</a>
-                <a href = '/exhibition/{{comment.id}}/delete_comment'>Delete</a>
+                <a href = '/exhibition/{{art.id}}/edit_art'>Edit</a>
+                <a href = '/exhibition/{{art.id}}/delete_art'>Delete</a>
             </td>
             <td>{{art.description}}</td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
-
 
 {% endblock %}
