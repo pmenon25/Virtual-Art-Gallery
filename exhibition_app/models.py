@@ -16,6 +16,7 @@ class Exhibition(models.Model):
         return f'{self.title} on {self.artist_name} and {self.date}'
 
 class Art(models.Model):
+    image = models.CharField(max_length=250)
     name = models.CharField(max_length= 100)
     description = models.CharField(max_length= 250)
     exhibition = models.ForeignKey(Exhibition , on_delete=models.CASCADE)
@@ -23,7 +24,7 @@ class Art(models.Model):
     def __str__(self) :
         return f'{self.name} on {self.description} and {self.exhibition}'
 
-class Comment(models.Model): #add datefield
+class Comment(models.Model):
     name = models.CharField(max_length=80, default='name')
     comment = models.TextField()
     created = models.DateTimeField(auto_now_add=True) 
@@ -31,9 +32,8 @@ class Comment(models.Model): #add datefield
     exhibition = models.ForeignKey(Exhibition , on_delete=models.CASCADE)
      
 
-
-    class Meta: 
-        ordering = ['created',] 
+class Meta: 
+    ordering = ['created',] 
 
     def __str__(self):
         return f'{self.name}on {self.comment} and {self.exhibition}'

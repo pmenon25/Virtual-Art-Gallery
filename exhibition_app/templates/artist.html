@@ -2,9 +2,13 @@
 {% block content %}
 <h1>Virtual Art Gallery</h1>
 <h2 id="artists">Artists</h2>
-<div class="artist-list">
 {% for exhibition in exhibition %}
-<a href='/exhibition/{{exhibition.id}}' >{{exhibition.artist_name}}</a>
-{% endfor %}
+<div class="flex-container">
+    <div class='flex-artist' id = 'artist_name'>
+   <a href= '/artists/{{exhibition.id}}/profile'>{{exhibition.artist_name}}</a>     
+    </div>
 </div>
+{% endfor %}
+
 {% endblock %}
+

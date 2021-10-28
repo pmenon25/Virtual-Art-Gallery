@@ -1,26 +1,30 @@
 from .forms import ArtForm, LikeForm
 from django.shortcuts import render, redirect
-from exhibition_app.models import Exhibition, Art, Comment, Like 
+from exhibition_app.models import Exhibition, Art, Comment, Like
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import ListView
 from .forms import CommentForm  
-
+import uuid
+import boto3
+S3_BASE_URL = 'https://s3.ca-central-1.amazonaws.com/'
+BUCKET = 'exhibitionart'
 
 # Create your views here.
 def home(request):
   return render(request, 'home.html')
 
 def info(request):
-  return render(request, 'info.html')
+  return render(request, 'about.html')
 
 def artist(request):
   exhibition = Exhibition.objects.all()
   return render(request, 'artist.html' , {'exhibition' : exhibition})
 
-
-
-  
+def profile(request,exhibition_id):
+  art = Art.objects.all().filter(exhibition_id=exhibition_id)
+  print('art:',art)
+  return render(request,'artistpage.html', {'art': art})
 
 # Exhibition view functions
 def exhibition(request):
@@ -86,11 +90,24 @@ def signup(request):
 
 # Art views functions
 def add_art(request, exhibition_id):
-  form = ArtForm(request.POST)
+  form = ArtForm(request.POST) 
+  print(form.errors)
   if form.is_valid():
+    print('hello')
     new_art = form.save(commit=False)
+    print(request.FILES)
+    photo_file = request.FILES.get('image', None)   
+    print(photo_file)
+    if photo_file:
+      s3 = boto3.client('s3')
+      key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+      print("key:" ,key)
+      s3.upload_fileobj(photo_file, BUCKET, key)
+    new_art.image = f"{S3_BASE_URL}{BUCKET}/{key}"
     new_art.exhibition_id = exhibition_id
     new_art.save()
+    print
+
   return redirect('details', exhibition_id=exhibition_id)
 
 def delete_art(request , art_id):
@@ -103,12 +120,11 @@ def edit_art(request, art_id):
   return render(request , 'art/update.html' , {'art':result})
 
 def update_art(request , art_id):
-  print('hello')
   art = Art.objects.get(id=art_id)
   art.name = request.POST['name']
   art.description = request.POST['description']
   art.exhibition_id = art.exhibition_id
-  print(art.exhibition_id )
+  print(art.exhibition_id)
   art.save()
   return redirect(f'/exhibition/{art.exhibition_id}')
 

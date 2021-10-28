@@ -1,69 +1,196 @@
-:root {
+  :root {
     --main-color: #E5E5E5;
     --seond-color: #000000;
     --third-color: #ED3833;
-    --fouth--color: #1B16FF;
+    --fouth--color: #1031b5;
     --fifth-color: #0D8C0A;
-}
+  }
 
-* {
+  * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'DIN Medium', Arial, Helvetica, sans-serif;
-}
+    background-color:rgb(247, 246, 240);
+  }
 
-h1 {
+  h1 {
     font-family: 'Founders Grotesk Bold Italic', Arial, Helvetica, sans-serif;
     font-size: 30px;
     margin: 0 auto;
     text-align: center;
-}
+  }
 
-h2 {
-   font-size: 15px;
-   text-align: center; 
-   text-transform: uppercase;
-   padding: 70px 0px 70px 0px;
-}
+  h2 {
+    font-size: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 70px 0px 70px 0px;
+  }
 
-h3 {
-   font-size: 15px;
-   text-align: center; 
-   text-transform: uppercase;
-   padding: 30px 0px 30px 0px;
-}
+  h3 {
+    font-size: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 30px 0px 30px 0px;
+  }
 
-h4 {
-  font-size: 12px;
-  padding-left: 10px;
-}
+  h4 {
+    font-size: 12px;
+    padding-left: 10px;
+  }
 
-#info {
+  #info {
     color: var(--fouth--color);
-}
+  }
 
-#artists {
+  #artists {
     color: var(--fifth-color);
-}
+  }
 
-p {
+  p {
     padding: 0px 180px 0px 180px;
     font-size: 12px;
-    font-family:  'DIN', Arial, Helvetica, sans-serif;;
-}
+    font-family: 'DIN', Arial, Helvetica, sans-serif;
+    ;
+  }
 
-.nav-wrapper li {
+  .nav-wrapper li {
     margin: 5px;
-}
+  }
 
-a:link, a:visited, a:hover, a:active {
+  a:link, a:visited, a:hover, a:active {
     color: var(--seond-color);
     text-transform: uppercase;
     text-decoration: none;
     font-size: 10px;
     display: block;
-}
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .right li {
+    float: right;
+  }
+
+  .left li {
+    float: left;
+  }
+
+  footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Artists  */
+
+  /* .flex-container {
+    display: flex;
+    justify-content: center;
+  } */
+
+  #artist_name {
+    font-family: 'Founders Grotesk Bold Italic', Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  /* About */
+
+  .info{
+    text-align: center;
+    padding-bottom: 3%;
+    font-style: italic;
+    
+  }
+
+  /* Create Exhibition */
+
+  .flex-parent {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 50px;
+  }
+
+  .flex-item {
+    width: 300px;
+    border-bottom: 1px solid var(--seond-color);
+    padding-bottom: 30px;
+  }
+
+  .flex-item.small {
+    width: 150px;
+  }
+
+  label {
+    font-size: 10px;
+  }
+
+  input, textarea, select {
+    width: 150px;
+    padding: 0;
+    margin: 5px;
+    box-sizing: border-box;
+  }
+
+  /* Exhibition Index */
+
+  table, td, th {
+    border-bottom: 1px solid var(--main-color);
+  }
+
+  table, p, th {
+    font-weight: lighter;
+  }
+
+  table {
+    font-size: 8px;
+    text-align: left;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 50px;
+  }
+
+  /* login */
+
+  .login input{ 
+    width: 20%;
+    padding: 12px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin: 0 auto;
+  }
+  .login{
+    display: flex;
+    justify-content: center;
+  }
+
+  .btn{
+      background-color:rgb(12, 12, 12);
+      color: white;
+      cursor: pointer;
+    
+  }
+  .btn:hover{
+    background-color: white ;
+    color: rgb(12, 12, 12);
+  }
+  label {
+    padding: 12px 12px 12px 0;
+    font-size: 100%;
+    justify-content: right;
+  }
+
 
 ul {
   list-style-type: none;
@@ -97,6 +224,71 @@ footer {
 }
 
 /* Create Exhibition */
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+/* .title {
+  font-size: 10px;
+  padding: 0;
+  text-transform: capitalize;
+  padding-left: 5px;
+}
+
 .flex-parent {
   display: flex;
   width: 100%;
@@ -104,48 +296,123 @@ footer {
   padding-top: 50px;
 }
 
-.flex-item {
-  width: 300px;
-  border-bottom: 1px solid var(--seond-color);
-  padding-bottom: 30px;
-}
-
-.flex-item.small {
-  width: 150px;
-}
-
-label {
-  font-size: 10px;
-}
-
 input[type=text] {
   width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
+  padding: 12px 0px;
   box-sizing: border-box;
 }
 
-input, textarea, select {
+textarea, select {
   width : 150px;
   padding: 0;
   margin: 5px;
   box-sizing: border-box;
 }
 
-/* Exhibition Index */
-
-table, td, th {
-  border-bottom: 1px solid var(--main-color);  
+button {
+  color: var(--seond-color);
+  background-color: white;
+  border: 1px solid var(--fifth-color);
+  border-radius: 2px;
+  padding: 5px 32px;
+  margin: 35px 0px 0px 105px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
 }
 
-table, p, th {
-  font-weight: lighter;
+button {
+  transition-duration: 0.4s;
+}
+
+button:hover {
+  background-color: var(--fifth-color);
+  color: white;
+}
+
+label {
+  width:180px;
+  clear:left;
+  text-align:right;
+  padding-right:10px;
+  font-size: 9px;
+  font-weight: normal;
+  float:left;
+  margin-bottom: 10px;
+}
+
+input {
+  float:left;
+  margin-bottom: 10px;
+  border: 1px solid var(--seond-color);
+  padding: 5px 10px;
+} */
+
+
+/* List of Exhibitions */
+.top-row {
+  border-bottom: 1px solid var(--seond-color);  
+}
+table, td, th {
+  border-bottom: 0.5px solid var(--seond-color);  
+}
+
+table, th {
+  font-weight: normal;
+  padding: 5px 0px 5px 10px;
+  text-transform: capitalize;
+}
+
+.index-p {
+  font-size: 8px;
+  padding: 0;
+  text-transform: capitalize;
 }
 
 table {
-  font-size: 8px;
   text-align: left;
   width: 100%;
   border-collapse: collapse;
   margin-top: 50px;
 }
+
+/* About */
+#header {
+  display: flex;
+  min-height: 90vh;
+  width: 100%;
+  background-image: url("images/field.jpg");
+  background-position: center;
+  background-size: cover;
+  z-index: 3;
+}
+
+.text-box  {
+  width: 90%; 
+  color: var(--main-color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 16px; 
+}
+
+.text-box h3 {
+ color: var(--fouth--color);
+font-size: 50px;
+letter-spacing: 2.5px; 
+}
+
+.about-text p {
+  text-align: center;
+  font-size: 10px;
+  font-weight: normal;
+  padding: 0px 180px 0px 180px;
+}
+
+main {
+  padding-bottom: 60px;
+}
+

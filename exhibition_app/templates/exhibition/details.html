@@ -1,29 +1,58 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h3>Add Art</h3>
+<h3>Exhibition Details</h3>
+
 The Exhibition  <p>{{exhibition.title}}</p>
 <br>
 The Art
-<form action="{% url 'add_art' exhibition.id %}" method="POST">
+<form action="{% url 'add_art' exhibition.id %}" enctype="multipart/form-data" method="POST">
     {% csrf_token %}
     {{ art_form.as_p }}
+    
+    <input type = 'file' name = 'image'>
     <input type="submit" class="btn" value="Add Art">
 </form>
 
+Comment!
+<form action="{% url 'add_comment' exhibition.id %}" method="POST">
+  {% csrf_token %}
+  {{ comment_form.as_p }}
+  <input type="submit" class="btn" value="Add Comment">
+</form>
 
     <table>
       <thead>
-        <tr><th>Name</th><th>Description</th></tr>
+        <tr><th>Name</th><th>Description</th><th>Image</th></tr>
       </thead>
       <tbody>
         {% for art in exhibition.art_set.all %}
+      
           <tr>
             <td>{{art.name}}
                 <a href = '/exhibition/{{art.id}}/edit_art'>Edit</a>
                 <a href = '/exhibition/{{art.id}}/delete_art'>Delete</a>
             </td>
             <td>{{art.description}}</td>
+            <td><img class="responsive-img card-panel" src="{{art.image}}"></td>
+            
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <table>
+      <thead>
+        <tr><th>Name</th><th>Comment</th></tr>
+      </thead>
+      <tbody>
+        {% for com in exhibition.comment_set.all %}
+          <tr>
+            <td>{{com.name}}
+                <a href = '/exhibition/{{comment.id}}/edit_comment'>Edit</a>
+                <a href = '/exhibition/{{comment.id}}/delete_comment'>Delete</a>
+            </td>
+            <td>{{com.comment}}{{com.created}}</td>
           </tr>
         {% endfor %}
       </tbody>
