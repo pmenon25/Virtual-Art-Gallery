@@ -44,6 +44,9 @@
     padding-left: 10px;
   }
 
+.add-art {
+  padding: 50px 0px 0px 0px; 
+}
   
   #artists {
     color: var(--fifth-color);
@@ -124,7 +127,6 @@
 }
 
   /* Artists  */
-
   #artist_name {
     font-family: 'Founders Grotesk Bold Italic', Arial, Helvetica, sans-serif;
     text-transform: uppercase;
@@ -132,7 +134,6 @@
   }
   
   /* Create Exhibition */
-  
   .flex-parent {
     display: flex;
     width: 100%;
@@ -162,7 +163,6 @@
   }
   
   /* Exhibition Index */
-  
   table, td, th {
     border-bottom: 1px solid var(--main-color);
   }
@@ -171,7 +171,12 @@
     font-weight: lighter;
   }
   
+  tr { 
+    height: 30px;
+  }
+
   table {
+    
     font-size: 8px;
     text-align: left;
     width: 100%;
@@ -179,6 +184,11 @@
     margin-top: 50px;
   }
   
+  .index-link {
+    border: 0.5px solid var(--seond-color);
+    border-radius: 5px;
+    padding: 5px 3px 3px 3px;
+  }
   /* Signup */
 
 .signup {
@@ -234,7 +244,7 @@ form {
     text-align: left;
 }
 
-  input[type=text],  input[type=password], select, textarea {
+ input[type=text],  input[type=password], select, textarea {
   width: 150px;
   padding: 3px;
   border: 1px solid var(--seond-color);
@@ -270,6 +280,7 @@ button {
     text-decoration: none;
     display: inline-block;
     font-size: 10px;
+    cursor: pointer;
   }
   
 /* Clear floats after the columns */
@@ -286,7 +297,6 @@ button {
     margin-top: 0;
   }
 }
-
 
   /* Artists  */
   canvas{
@@ -329,131 +339,9 @@ button {
   }
 
   /* Create Exhibition */
-  /* input[type=text], select, textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-  }
-  
-  label {
-    padding: 12px 12px 12px 0;
-    display: inline-block;
-  }
-  
-  input[type=submit] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    float: right;
-  }
-  
-  input[type=submit]:hover {
-    background-color: #45a049;
-  }
-  
-  .container {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-  }
-  
-  .col-25 {
-    float: left;
-    width: 25%;
-    margin-top: 6px;
-  }
-  
-  .col-75 {
-    float: left;
-    width: 75%;
-    margin-top: 6px;
-  }
-  
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  
-  @media screen and (max-width: 600px) {
-    .col-25, .col-75, input[type=submit] {
-      width: 100%;
-      margin-top: 0;
-    }
-  } */
-  
-  /* .title {
-    font-size: 10px;
-    padding: 0;
-    text-transform: capitalize;
-    padding-left: 5px;
-  }
-  
-  .flex-parent {
-    display: flex;
-    width: 100%;
-    margin: 0 auto;
-    padding-top: 50px;
-  }
-  
-  input[type=text] {
-    width: 100%;
-    padding: 12px 0px;
-    box-sizing: border-box;
-  }
-  
-  textarea, select {
-    width : 150px;
-    padding: 0;
-    margin: 5px;
-    box-sizing: border-box;
-  }
-  
-  button {
-    color: var(--seond-color);
-    background-color: white;
-    border: 1px solid var(--fifth-color);
-    border-radius: 2px;
-    padding: 5px 32px;
-    margin: 35px 0px 0px 105px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 10px;
-  }
-  
-  button {
-    transition-duration: 0.4s;
-  }
-  
-  button:hover {
-    background-color: var(--fifth-color);
-    color: white;
-  }
-  
-  label {
-    width:180px;
-    clear:left;
-    text-align:right;
-    padding-right:10px;
-    font-size: 9px;
-    font-weight: normal;
-    float:left;
-    margin-bottom: 10px;
-  }
-  
-  input {
-    float:left;
-    margin-bottom: 10px;
-    border: 1px solid var(--seond-color);
-    padding: 5px 10px;
-  } */
-  
+.container {
+  padding-top: 40px;
+}  
   
   /* List of Exhibitions */
   .top-row {
@@ -526,3 +414,111 @@ main {
   min-height: 90vh;
 }
 
+/*  Add Art */
+div.add-art-form label {
+  font-size: 9px;
+}
+
+div.add-art-form p {
+  padding: 0px 0px 0px 190px;
+}
+
+div.add-art-title {
+  padding: 0px 0px 10px 10px;
+  border-bottom: 1px solid var(--seond-color);
+}
+
+div.add-art-title p {
+    font-size: 9px;
+    text-transform: capitalize;
+  }
+
+h6 {
+ padding: 10px 0px 10px 10px; 
+ display: inline-block;
+}
+
+input#id_name {
+  margin-left: 26px;
+}
+
+input[type=file] {
+  display: block;
+  cursor: pointer;
+  margin-left: 247px;
+}
+
+.add-art-btn {
+  margin-left: 280px;
+  padding: 5px 15px;
+}
+
+.add-art-img img {
+  width: 20%; 
+  height: 20%;
+}
+
+.add-art-table th {
+  width: 100px;
+}
+
+table.add-art-table {
+  margin-top: 0px;
+}
+
+/*  Artist Page */
+
+/* Style the top navigation bar */
+.navbar {
+  display: flex;
+  background-color: #333;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  color: white;
+  padding: 14px 20px;
+  text-decoration: none;
+  text-align: center;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Column container */
+.row {  
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+  flex: 30%;
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+/* Main column */
+.main {
+  flex: 70%;
+  background-color: white;
+  padding: 20px;
+}
+
+/* Fake image, just for this example */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row, .navbar {   
+    flex-direction: column;
+  }
+}

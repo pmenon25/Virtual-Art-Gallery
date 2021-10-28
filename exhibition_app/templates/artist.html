@@ -3,18 +3,18 @@
 <h3 id="artists">Artists</h3>
 
 <canvas></canvas>
-<script src="/static/css/js/app.js"></script>
 
 <section class="artists-section">
     <div class="artists">
         {% for exhibition in exhibition %}
        <ul>   
-        <a class="artist-links" href= '#'><li>{{exhibition.artist_name}}</li></a>     
-       </ul>
+           <a class="artist-links" href= '#'><li>{{exhibition.artist_name}}</li></a>     
+        </ul>
         {% endfor %}
     </div>
-
+    
 </section>
 
+<script src="/static/css/js/app.js"></script>
 {% endblock %}
 
