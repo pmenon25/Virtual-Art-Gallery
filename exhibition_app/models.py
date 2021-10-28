@@ -16,19 +16,13 @@ class Exhibition(models.Model):
         return f'{self.title} on {self.artist_name} and {self.date}'
 
 class Art(models.Model):
+    image = models.CharField(max_length=250)
     name = models.CharField(max_length= 100)
     description = models.CharField(max_length= 250)
     exhibition = models.ForeignKey(Exhibition , on_delete=models.CASCADE)
 
     def __str__(self) :
         return f'{self.name} on {self.description} and {self.exhibition}'
-
-# class Photo(models.Model):
-#     url = models.CharField(max_length=200)
-#     art = models.ForeignKey(Art, on_delete=models.CASCADE)
-
-#     def __str__(self):
-#         return f"Photo for art_id: {self.art} @{self.url}"
 
 class Comment(models.Model):
     name = models.CharField(max_length=80, default='name')
