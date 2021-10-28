@@ -21,6 +21,10 @@ def artist(request):
   exhibition = Exhibition.objects.all()
   return render(request, 'artist.html' , {'exhibition' : exhibition})
 
+def profile(request,exhibition_id):
+  art = Art.objects.all().filter(exhibition_id=exhibition_id)
+  print('art:',art)
+  return render(request,'artistpage.html', {'art': art})
 
 # Exhibition view functions
 def exhibition(request):
@@ -139,20 +143,4 @@ def update_art(request , art_id):
   art.save()
   return redirect(f'/exhibition/{art.exhibition_id}')
 
-# def add_photo(request, art_id , exhibition_id):
-#     photo_file = request.FILES.get('photo-file', None)
-#     print('works!  - 1', photo_file)
-#     if photo_file:
-#         s3 = boto3.client('s3')
-#         print('works - 2! ', s3)
-#         key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
-#         print('works! - 3 ', key)
-#         s3.upload_fileobj(photo_file, BUCKET, key)
-#         print('works! -4 ')
-#         Photo.objects.create(
-#             url= f"{S3_BASE_URL}{BUCKET}/{key}",
-#             art=art_id
-#             )
-#         print(art_id)
-#     return redirect(f'/exhibition/{exhibition_id}')
  
