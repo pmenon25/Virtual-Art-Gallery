@@ -105,6 +105,7 @@ def add_art(request, exhibition_id):
   if form.is_valid():
     print('hello')
     new_art = form.save(commit=False)
+    print(request.FILES)
     photo_file = request.FILES.get('image', None)   
     print(photo_file)
     if photo_file:
@@ -112,6 +113,7 @@ def add_art(request, exhibition_id):
       key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
       print("key:" ,key)
       s3.upload_fileobj(photo_file, BUCKET, key)
+    new_art.image = f"{S3_BASE_URL}{BUCKET}/{key}"
     new_art.exhibition_id = exhibition_id
     new_art.save()
     print
