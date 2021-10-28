@@ -1,25 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h2>Log In</h2>
-<div class='container'>
+<h3>LogIn</h3>
+<div class='login-container form'>
   <form class="modal-content" method="post" action="{% url 'login' %}">
-    <div class=row>
+    <div class=login-row>
       {% csrf_token %}
-      <div class="col-25 login">
-        <label for="fname">Username</label>
+      <div class="col-small">
+        <label for="username">Username</label>
       </div>
-      <div class="col-75 login">
-        <input type="text"  name="username" placeholder="Username">
+      <div class="col-large">
+        <input type="text"  name="username">
       </div>
-      <div class="col-25 login">
+      <div class="col-small">
         <label for="password">Password</label>
       </div>
-      <div class="col-75 login">
-        <input type="password"  name="password" placeholder="password">
+      <div class="col-large">
+        <input type="password"  name="password">
       </div>
-      <div class = 'login'>
-        <input type="submit" class="btn" value="login">
+      <div>
+        <button type = 'submit'>Login</button>
       </div>
       <input type="hidden" name="next" value="{{ next }}">
     </div>

@@ -3,11 +3,12 @@
 
 {{ error_message }}
 
-<h1>Sign Up</h1>
+<h3>Sign Up</h3>
+<div class="form">
 <form method="post" action="{% url 'signup' %}">
     {% csrf_token %}
-    {{ form }}
-    <input type="submit" class="btn" value="sign up">
+    <div class="signup">{{ form }}<div> <br>
+    <button class="button" type = 'submit'>Sign Up</button>
   </form>
-
+</div>
 {% endblock %}
