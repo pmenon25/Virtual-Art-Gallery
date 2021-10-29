@@ -18,13 +18,15 @@ def info(request):
   return render(request, 'about.html')
 
 def artist(request):
-  exhibition = Exhibition.objects.all()
+  exhibition = Exhibition.objects.all().distinct('artist_name')
   return render(request, 'artist.html' , {'exhibition' : exhibition})
 
 def profile(request,exhibition_id):
-  art = Art.objects.all().filter(exhibition_id=exhibition_id)
+  exhibition = Exhibition.objects.get(id=exhibition_id)
+  art = Art.objects.all()
   print('art:',art)
-  return render(request,'artistpage.html', {'art': art})
+  print(exhibition_id)
+  return render(request,'artistpage.html', {'art': art , 'exhibition':exhibition})
 
 # Exhibition view functions
 def exhibition(request):
