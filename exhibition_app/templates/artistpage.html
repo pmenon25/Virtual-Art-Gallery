@@ -45,24 +45,25 @@
         <p class="artist-page-ex-desc">Description: {{art.exhibition.description}}</p>
     {% endfor %}
 </div>
-<form action="/artists/{{exhibition_id}}/add_comment/" method="POST">
+<form action="/artists/{{exhibition.id}}/add_comment/" method="POST">
     {% csrf_token %}
     {{ comment_form.as_p }}
     <input type="submit" class="btn" value="Add Comment">
   </form>
-  <form action="{% url 'add_like' exhibition_id %}" method="POST">
+  <form action="/artists/{{exhibition.id}}/add_like/" method="POST">
     {% csrf_token %}
     <input type="submit" class="btn" value="Like!">
 </form> 
 {{exhibition.likes}} people like this!
 <br><br>
       {% for com in exhibition.comment_set.all %}
-      
     {{com.name}} says {{com.comment}} on {{com.created}}
     <br>
-        <!-- <a href = '/artists/{{com.id}}/edit_comment'>Edit</a> -->
-        <a href = '/artists/{{com.id}}/delete_comment'>Delete</a>
+        <a href = '/artists/{{com.id}}/delete_comment/'>Delete</a>
     
     <br>
-    {% endfor %}
-{% endblock %}
+      {% endfor %}
+
+      
+    </body>
+</html>

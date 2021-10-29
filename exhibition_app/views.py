@@ -22,7 +22,6 @@ def artist(request):
   return render(request, 'artist.html' , {'exhibition' : exhibition})
 
 def profile(request,exhibition_id):
-  exhibition = Exhibition.objects.get(id=exhibition_id)
   comment_form = CommentForm()
   exhibition = Exhibition.objects.get(id=exhibition_id)
   art = Art.objects.all().filter(exhibition_id=exhibition_id)
@@ -33,7 +32,7 @@ def exhibition(request):
   exhibition = Exhibition.objects.filter(user=request.user)
   comment_form = CommentForm()
   return render(request , 'exhibition/profile.html' , 
-  {'exhibition' : exhibition, 'comment_form': comment_form}, )
+  {'exhibition' : exhibition, 'comment_form': comment_form})
   
 def new(request):
   return render (request , 'exhibition/create.html')
@@ -144,23 +143,8 @@ def delete_comment(request, comment_id):
   delete.delete()
   return redirect(f'/artists/{delete.exhibition_id}/profile/')
 
-def edit_comment(request, comment_id): 
-  result = Comment.objects.get(id=comment_id)
-  return render(request , 'comment/update.html' , {'comment':result})
-
-def update_comment(request , comment_id):
-  
-  comment = Comment.objects.get(id=comment_id)
-  comment.name = request.POST['name']
-  comment.description = request.POST['description']
-  comment.exhibition_id = comment.exhibition_id
-  print(comment.exhibition_id )
-  comment.save()
-  return redirect(f'/artists/{comment_id}/profile/')
-
- 
 #like views functions
-def add_like(request, exhibition_id): 
+def add_like(request, exhibition_id):
   exhibition = Exhibition.objects.get(id=exhibition_id)
   exhibition.likes +=1
   exhibition.save()

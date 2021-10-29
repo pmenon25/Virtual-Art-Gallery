@@ -22,15 +22,11 @@ urlpatterns = [
     path('exhibition/<int:art_id>/update_art/' , views.update_art),
     path('accounts/signup/', views.signup, name='signup'),
 
-    
     #comment
     path('artists/<int:exhibition_id>/add_comment/', views.add_comment, name='add_comment'),
     path('artists/<int:comment_id>/delete_comment/' , views.delete_comment),
-    path('artists/<int:comment_id>/edit_comment/' , views.edit_comment),
-    path('artists/<int:comment_id>/update_comment/' , views.update_comment),
     
-
     #like
-    path('exhibition/<int:exhibition_id>/add_like/', views.add_like, name='add_like')
+    path('artists/<int:exhibition_id>/add_like/', views.add_like, name='add_like')
     
 ]   
