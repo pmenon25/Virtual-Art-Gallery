@@ -16,24 +16,40 @@
     {% for art in art %}
         <a class="artist-page-li" href=""><span class="dot"></span>{{art.exhibition.title}}</a> <br>
     {% endfor %}
+  
+    <form class="artist-comment" action="/artists/{{exhibition.id}}/add_comment/" method="POST">
+    {% csrf_token %}
+    {{ comment_form.as_p }}
+  <button type = 'submit'>Add Comment</button>
+  </form>
+  <form class="artist-like" action="/artists/{{exhibition.id}}/add_like/" method="POST">
+    {% csrf_token %}
+    <button type = 'submit'>Like</button>
+</form> 
+  {{exhibition.likes}} people like this!
+<br><br>
+    {% for com in exhibition.comment_set.all %}
+    {{com.name}} says {{com.comment}} on {{com.created}}
+    <br>
+        <a href = '/artists/{{com.id}}/delete_comment/'>Delete</a>
+    <br>
+      {% endfor %}
   </div>
 
   <div class="main">
     <section class="header">
-        <div class="navbar-left">
+        <div class="home-navbar artist">
                     {% if user.is_authenticated %}
                     <a href="{% url 'logout' %}">Log Out</a>
                     <a href="{% url 'newexhibition' %}">New Exhibit<a>
-                    <a href="{% url 'exhibitions' %}">Exhibit(s)</a>
+                        <a class ="exhibit-link" href="{% url 'exhibitions' %}">Exhibit(s)</a>
                     {% else %}
                     <a href = "{% url 'signup' %}">Sign up</a>
                     <a href="{% url 'login' %}">LogIn</a>
                     {% endif %}
-        </div>
-        <!-- <a  id="title" href="{% url 'home' %}"><h1>Virtual Art Gallery</h1></a> -->
-        <div class="navbar-right">
-            <a href="{% url 'about' %}">About</a>
-            <a href="{% url 'artist' %}">Artists</a>
+                    <a href="{% url 'about' %}">About</a>
+                    <a href="{% url 'artist' %}">Artists</a>
+                <a  id="title" href="{% url 'home' %}"><h1>Virtual Art Gallery</h1></a>
         </div>
     </section>
         {% for art in art %}
@@ -45,25 +61,6 @@
         <p class="artist-page-ex-desc">Description: {{art.exhibition.description}}</p>
     {% endfor %}
 </div>
-<form action="/artists/{{exhibition.id}}/add_comment/" method="POST">
-    {% csrf_token %}
-    {{ comment_form.as_p }}
-    <input type="submit" class="btn" value="Add Comment">
-  </form>
-  <form action="/artists/{{exhibition.id}}/add_like/" method="POST">
-    {% csrf_token %}
-    <input type="submit" class="btn" value="Like!">
-</form> 
-{{exhibition.likes}} people like this!
-<br><br>
-      {% for com in exhibition.comment_set.all %}
-    {{com.name}} says {{com.comment}} on {{com.created}}
-    <br>
-        <a href = '/artists/{{com.id}}/delete_comment/'>Delete</a>
-    
-    <br>
-      {% endfor %}
-
       
     </body>
 </html>

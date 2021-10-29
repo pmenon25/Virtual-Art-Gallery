@@ -12,31 +12,31 @@
     box-sizing: border-box;
     font-family: 'DIN Medium', Arial, Helvetica, sans-serif;
     list-style: none;
-    font-size: 10px;
+    font-size: 13px;
     font-weight: normal;
   }
 
   /* Base */
   h1 {
     font-family: 'Founders Grotesk Bold Italic', Arial, Helvetica, sans-serif;
-    font-size: 25px;
+    font-size: 3.5px;
     margin: 0 auto;
     text-align: center;
     width: fit-content;
   }
 
   h2 {
-    font-size: 30px;
+    font-size: 3vw;
     text-align: center;
     text-transform: uppercase;
     padding: 70px 0px 70px 0px;
   }
 
   h3 {
-    font-size: 15px;
+    font-size: 2vw;
     text-align: center;
     text-transform: uppercase;
-    padding: 30px 0px 30px 0px;
+    padding: 100px 0px 30px 0px;
   }
 
   h4 {
@@ -59,7 +59,7 @@
   }
   
   footer {
-    position: fixed;
+    position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -67,47 +67,43 @@
   }
   
   /* Nav Bar  */
+  a.exhibit-link {
+    margin-left: -40px;
+  }
   .header {
-    display: flex;
-    z-index: 3;
+    position: relative;
   }
 
   #title  {
   width: fit-content;
   position: absolute;
-  top: 3%;
+  top: 5%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  margin-top: 50px;
 }
 
   a:link, a:visited, a:hover, a:active {
     color: var(--seond-color);
     text-transform: uppercase;
     text-decoration: none;
-    font-size: 10px;
+    font-size: 1.6vw;
   }
 
-  .navbar-right {
-  overflow: hidden;
+.home-navbar {
+  display: flex;
+  justify-content: center;
+  position: fixed;
   top: 0;
+  width: 100%;
+  padding: 10px 0px 0px 0px;
 }
 
- .navbar-left {
-   left: 0;
-  overflow: hidden;
-  top: 0;
+.home-navbar a {
+  padding: 0px 20px 0px 20px;
 }
 
-.navbar-left a {
-  float: left;
-  padding: 8px 8px 0px 8px;
-} 
-
-.navbar-right a {
-  float: right;
-  padding: 8px 8px 0px 8px;
-}
   /* Home */
 .home-grid-item img {
   max-width: 100%;
@@ -152,7 +148,7 @@
   }
   
   label {
-    font-size: 10px;
+    font-size: 1.5vw;
   }
   
   input, textarea, select {
@@ -197,7 +193,7 @@
 
 span.helptext {
   font-family: "Founders Grotesk Regular", Arial, Helvetica, sans-serif;
-  font-size: 7px;
+  font-size: 10px;
   font-weight: normal;
   display: block;
   padding-bottom: 10px;
@@ -205,7 +201,7 @@ span.helptext {
 
 .helptext li {
   font-family: "Founders Grotesk Regular", Arial, Helvetica, sans-serif;
-  font-size: 7px;
+  font-size: 10px;
   font-weight: normal; 
 }
 
@@ -215,7 +211,7 @@ span.helptext {
   }
 
 .signup input[type=text],  .signup input[type=password], select, textarea {
-  width: 200px;
+  width: 260px;
   padding: 3px;
   border-radius: 0px;
   resize: vertical;
@@ -246,7 +242,7 @@ form {
 
  input[type=text],  input[type=password], select, textarea {
   width: 150px;
-  padding: 3px;
+  padding: 3vw;
   border: 1px solid var(--seond-color);
   border-radius: 4px;
   resize: vertical;
@@ -279,7 +275,7 @@ button {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 10px;
+    font-size: 1.2vw;
     cursor: pointer;
   }
   
@@ -305,8 +301,10 @@ button {
     pointer-events: none;
   }
 
-  section {
+.artists-section {
     position: relative;
+    height: 10vh;
+    width: 100vw;
   }
 
   .artists {
@@ -320,29 +318,37 @@ button {
     width: 100%;
     height: 100%;
     justify-content: space-between;
-    padding: 30px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
   }
 
   .artists li {
     position: relative;
     border-bottom: 0.5px solid #0000006b;
     cursor: pointer;
-    font-size: 6.2vw;
-  }
-  
-  .artist-img {
-    opacity: 0%;
-    position: absolute;
-    top: -100%;
-    pointer-events: none;
-    user-select: none;
+    font-size: 5vw;
   }
 
+  .project-image {
+  opacity: 0%;
+  position: absolute;
+  top: 100%;
+  pointer-events: none;
+  user-select: none;
+  width: 100px;
+  height: 100px;
+}
   /* Create Exhibition */
 .container {
   padding-top: 40px;
 }  
+
+form.create-ex {
+  margin-top: -40px;
+}
   
+form.update-ex {
+  padding-left: 5px;
+}
   /* List of Exhibitions */
   .top-row {
     border-bottom: 1px solid var(--seond-color);  
@@ -358,7 +364,7 @@ button {
   }
   
   .index-p {
-    font-size: 8px;
+    font-size: 13px;
     padding: 0;
     text-transform: capitalize;
   }
@@ -373,12 +379,12 @@ button {
   /* About */
   #about-title {
     color: var(--fouth--color);
-    padding-top: 100px;
+    padding-top: 150px;
   }
 
   #header {
     display: flex;
-    min-height: 90vh;
+    min-height: 100vh;
     width: 100%;
     background-image: url("images/field.jpg");
     background-position: center;
@@ -404,19 +410,19 @@ letter-spacing: 2.5px;
 
 .about-text p {
   text-align: center;
-  font-size: 10px;
+  font-size: 1.6vw;
   font-weight: normal;
   padding: 0px 100px 0px 100px;
 }
 
 main {
-  padding-bottom: 60px;
-  min-height: 90vh;
+  padding-bottom: 30px;
+  min-height: 100vh;
 }
 
 /*  Add Art */
 div.add-art-form label {
-  font-size: 9px;
+  font-size: 12px;
 }
 
 div.add-art-form p {
@@ -429,7 +435,7 @@ div.add-art-title {
 }
 
 div.add-art-title p {
-    font-size: 9px;
+    font-size: 14px;
     text-transform: capitalize;
   }
 
@@ -467,20 +473,27 @@ table.add-art-table {
 }
 
 /*  Artist Page */
+div.home-navbar.artist {
+  width: 70%;
+}
+
+.artist-comment p{
+  padding: 0px 0px 0px 0px;
+}
 .artist-page-desc {
   padding: 13px 0px 0px 0px;
-  font-size: 8px;
+  font-size: 10px;
   text-align: center;
 }
 
 .artist-page-ex-desc {
   padding: 13px 0px 0px 12px;
-  font-size: 8px;
+  font-size: 10px;
 }
 
 .main-title {
-  padding: 10px 0px 10px 0px;
-  font-size: 20px;
+  padding: 90px 0px 10px 0px;
+  font-size: 23px;
   text-transform: capitalize;
 }
 
@@ -501,7 +514,7 @@ img.artist-page-img {
 a.artist-page-li  {
   padding: 0px 0px 0px 5px;
   text-transform: capitalize;
-  font-size: 20px;
+  font-size: 23px;
 }
 
 .dot {
@@ -528,7 +541,7 @@ a.artist-page-li  {
 .artist-page-ex {
   text-align: left;
   padding: 20px 0px 10px 10px;
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .artist-page-title {

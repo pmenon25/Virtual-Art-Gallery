@@ -11,20 +11,19 @@
 </head>
 <body>
     <section class="header">
-        <div class="navbar-left">
+        <div class="home-navbar">
+                    
                     {% if user.is_authenticated %}
                     <a href="{% url 'logout' %}">Log Out</a>
                     <a href="{% url 'newexhibition' %}">New Exhibit<a>
-                    <a href="{% url 'exhibitions' %}">Exhibit(s)</a>
+                        <a class ="exhibit-link" href="{% url 'exhibitions' %}">Exhibit(s)</a>
                     {% else %}
                     <a href = "{% url 'signup' %}">Sign up</a>
                     <a href="{% url 'login' %}">LogIn</a>
                     {% endif %}
-        </div>
-        <!-- <a  id="title" href="{% url 'home' %}"><h1>Virtual Art Gallery</h1></a> -->
-        <div class="navbar-right">
-            <a href="{% url 'about' %}">About</a>
-            <a href="{% url 'artist' %}">Artists</a>
+                    <a href="{% url 'about' %}">About</a>
+                    <a href="{% url 'artist' %}">Artists</a>
+                <a  id="title" href="{% url 'home' %}"><h1>Virtual Art Gallery</h1></a>
         </div>
     </section>
 
