@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Virtual Art Gallery</h1>
+	<form method = 'POST' action = '/exhibition/{{comment.id}}/update_comment/'>
+	    {% csrf_token %}   
+	    <label for = 'name'>Name</label>
+	    <input name = 'name' value = '{{com.name}}'>
+	    <label for = 'comment' >Comment</label>
+	    <input name = 'description' value = '{{com.comment}}'>
+	    <button type = 'submit'>Update</button>
+	</form>
+{% endblock %}

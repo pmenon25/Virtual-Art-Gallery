@@ -11,3 +11,8 @@ class ArtForm(ModelForm):
     class Meta:
         model = Art
         fields = ['name', 'description']
+
+# class LikeForm(ModelForm):
+#     class Meta:
+#         model = Like
+#         fields = ["likes"]
