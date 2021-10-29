@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Comment, Art, Like
+from .models import Comment, Art
 
 class CommentForm(ModelForm):  
     class Meta:  
@@ -12,7 +12,7 @@ class ArtForm(ModelForm):
         model = Art
         fields = ['name', 'description']
 
-class LikeForm(ModelForm):
-    class Meta:
-        model = Like
-        fields = ["likes"]
+# class LikeForm(ModelForm):
+#     class Meta:
+#         model = Like
+#         fields = ["likes"]

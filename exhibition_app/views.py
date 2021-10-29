@@ -1,6 +1,6 @@
-from .forms import ArtForm, LikeForm
+from .forms import ArtForm
 from django.shortcuts import render, redirect
-from exhibition_app.models import Exhibition, Art, Comment, Like
+from exhibition_app.models import Exhibition, Art, Comment 
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import ListView
@@ -22,9 +22,11 @@ def artist(request):
   return render(request, 'artist.html' , {'exhibition' : exhibition})
 
 def profile(request,exhibition_id):
+  comment_form = CommentForm()
+  exhibition = Exhibition.objects.get(id=exhibition_id)
   art = Art.objects.all().filter(exhibition_id=exhibition_id)
-  print('art:',art)
-  return render(request,'artistpage.html', {'art': art})
+  # print('art:',art.exhibition_id)
+  return render(request,'artistpage.html', {'art': art, 'exhibition_id':exhibition_id, 'comment_form': comment_form, 'exhibition':exhibition})
 
 # Exhibition view functions
 def exhibition(request):
@@ -132,15 +134,15 @@ def update_art(request , art_id):
 def add_comment(request, exhibition_id):
   form = CommentForm(request.POST)
   if form.is_valid():
-    new_comment = form.save(commit=False)
-    new_comment.exhibition_id = exhibition_id
-    new_comment.save()
-  return redirect('profile', exhibition_id=exhibition_id)
+    add = form.save(commit=False)
+    add.exhibition_id = exhibition_id
+    add.save()
+  return redirect(f'/artists/{exhibition_id}/profile/')
 
 def delete_comment(request, comment_id):
   delete = Comment.objects.get(id=comment_id)
   delete.delete()
-  return redirect(f'/exhibition/{delete.exhibition.id}')
+  return redirect(f'/artists/{delete.exhibition_id}/profile/')
 
 def edit_comment(request, comment_id): 
   result = Comment.objects.get(id=comment_id)
@@ -154,14 +156,12 @@ def update_comment(request , comment_id):
   comment.exhibition_id = comment.exhibition_id
   print(comment.exhibition_id )
   comment.save()
-  return redirect(f'/exhibition/{comment.exhibition_id}')
+  return redirect(f'/artists/{comment_id}/profile/')
 
  
 #like views functions
 def add_like(request, exhibition_id): 
-  form = LikeForm(request.POST)
-  if form.is_valid():
-    new_like = form.save(commit=False)
-    new_like.exhibition_id = exhibition_id
-    new_like.save()
-  return redirect('profile.html', exhibition_id=exhibition_id)
+  exhibition = Exhibition.objects.get(id=exhibition_id)
+  exhibition.likes +=1
+  exhibition.save()
+  return redirect(f'/artists/{exhibition_id}/profile/')

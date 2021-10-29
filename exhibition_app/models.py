@@ -11,6 +11,7 @@ class Exhibition(models.Model):
     description = models.CharField(max_length=250)
     date = models.DateField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    likes = models.IntegerField(default=0)
 
     def __str__(self) :
         return f'{self.title} on {self.artist_name} and {self.date}'
@@ -38,9 +39,9 @@ class Meta:
     def __str__(self):
         return f'{self.name}on {self.comment} and {self.exhibition}'
 
-class Like (models.Model):
-    likes = models.IntegerField(default=0)
-    exhibition = models.ForeignKey(Exhibition , on_delete=models.CASCADE)
+# class Like (models.Model):
+#     likes = models.IntegerField(default=0)
+#     exhibition = models.ForeignKey(Exhibition , on_delete=models.CASCADE)
 
-    def __str__(self):
-        return f'{self.likes}on {self.exhibition}'
+#     def __str__(self):
+#         return f'{self.likes}on {self.exhibition}'
