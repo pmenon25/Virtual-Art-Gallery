@@ -10,30 +10,26 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <header class="navbar-fixed">
-        <nav>
-            <div class="nav-wrapper">
-                <ul class="left">
+    <section class="header">
+        <div class="navbar-left">
                     {% if user.is_authenticated %}
-                    <li><a href="{% url 'logout' %}">Log Out</a></li>
-                    <li><a href="{% url 'newexhibition' %}">New Exhibit<a></li> 
-                    <li><a href="{% url 'exhibitions' %}">Exhibit(s)</a></li> 
+                    <a href="{% url 'logout' %}">Log Out</a>
+                    <a href="{% url 'newexhibition' %}">New Exhibit<a>
+                    <a href="{% url 'exhibitions' %}">Exhibit(s)</a>
                     {% else %}
-                    <li><a href = "{% url 'signup' %}">Sign up</li>
-                        <li><a href="{% url 'login' %}">Log In</a></li>
-                        {% endif %}
-                    </ul>
-                    <ul class="right">
-                      <li><a href="{% url 'about' %}">About</a></li>
-                      <li><a href="{% url 'artist' %}">Artists</a></li>
-                      <!-- <li><a href="{% url 'home' %}">Archive</a></li> -->
-                    </ul>
-                </div>
-            </nav>
-    </header>
-    <main class="container">
-        {% block content %}
-        {% endblock %}
-    </main>
+                    <a href = "{% url 'signup' %}">Sign up</a>
+                    <a href="{% url 'login' %}">LogIn</a>
+                    {% endif %}
+        </div>
+        <!-- <a  id="title" href="{% url 'home' %}"><h1>Virtual Art Gallery</h1></a> -->
+        <div class="navbar-right">
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'artist' %}">Artists</a>
+        </div>
+    </section>
+
+
+    {% block content %}
+    {% endblock %}
 </body>
-</html>
+</html>        
