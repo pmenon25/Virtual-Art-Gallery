@@ -12,10 +12,10 @@
     </tr>
     <tr>
         {% for exhibition in exhibition %}
-        <th><p class="index-p">{{exhibition.title}}</p></th>
+        <th><p class="index-p">{{exhibition.artist_name }}</p></th>
+        <th><p class="index-p">{{ exhibition.title }}</p></th>
         <th><p class="index-p">{{ exhibition.description }}</p></th>
         <th><p class="index-p">{{ exhibition.date }}</p></th>
-        <th><p class="index-p">{{ exhibition.artist_name }}</p></th>
         <th><a class="index-link" href = '/exhibition/{{exhibition.id}}' >Add Art</a>
             <a class="index-link" href = '/exhibition/{{exhibition.id}}/edit'>Edit</a>
             <a class="index-link" href = '/exhibition/{{exhibition.id}}/delete'>Delete</a>

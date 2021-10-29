@@ -1,52 +1,69 @@
-{% extends 'base.html' %}
-
-{% block content %}
-
-<!-- The flexible grid (content) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Virtual Art Gallery</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+</head>
+<body>
 <div class="row">
   <div class="side">
-    <h2>About Me</h2>
-    <h5>Photo of me:</h5>
-    <div class="fakeimg" style="height:200px;">Image</div>
-    <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-    <h3>More Text</h3>
-    <p>Lorem ipsum dolor sit ame.</p>
-    <div class="fakeimg" style="height:60px;">Image</div><br>
-    <div class="fakeimg" style="height:60px;">Image</div><br>
-    <div class="fakeimg" style="height:60px;">Image</div>
+      <h2 class="artist-page-title">{{exhibition.artist_name}}</h2>
+      <div class="hl"></div>
+      <h3 class="artist-page-ex">Exhibition</h3> 
+    {% for art in art %}
+        <a class="artist-page-li" href=""><span class="dot"></span>{{art.exhibition.title}}</a> <br>
+    {% endfor %}
   </div>
+
   <div class="main">
-    <h2>TITLE HEADING</h2>
-    <h5>Title description, Dec 7, 2017</h5>
-    <div class="fakeimg" style="height:200px;">Image</div>
-    <p>Some text..</p>
-    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-    <br>
-    <h2>TITLE HEADING</h2>
-    <h5>Title description, Sep 2, 2017</h5>
-    <div class="fakeimg" style="height:200px;">Image</div>
-    <p>Some text..</p>
-    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-  </div>
+    <section class="header">
+        <div class="navbar-left">
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}">Log Out</a>
+                    <a href="{% url 'newexhibition' %}">New Exhibit<a>
+                    <a href="{% url 'exhibitions' %}">Exhibit(s)</a>
+                    {% else %}
+                    <a href = "{% url 'signup' %}">Sign up</a>
+                    <a href="{% url 'login' %}">LogIn</a>
+                    {% endif %}
+        </div>
+        <!-- <a  id="title" href="{% url 'home' %}"><h1>Virtual Art Gallery</h1></a> -->
+        <div class="navbar-right">
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'artist' %}">Artists</a>
+        </div>
+    </section>
+        {% for art in art %}
+        <h2 class="main-title">{{art.exhibition.title}}</h2>
+        <div class="hl-desc"></div>
+        <div></div>
+        <img class="artist-page-img" src="{{art.image}}"> 
+        <p class="artist-page-desc">{{art.description}}</p>
+        <p class="artist-page-ex-desc">Description: {{art.exhibition.description}}</p>
+    {% endfor %}
 </div>
-<form action="/artists/{{exhibition_id}}/add_comment/" method="POST">
+<form action="/artists/{{exhibition.id}}/add_comment/" method="POST">
     {% csrf_token %}
     {{ comment_form.as_p }}
     <input type="submit" class="btn" value="Add Comment">
   </form>
-  <form action="{% url 'add_like' exhibition_id %}" method="POST">
+  <form action="/artists/{{exhibition.id}}/add_like/" method="POST">
     {% csrf_token %}
     <input type="submit" class="btn" value="Like!">
 </form> 
 {{exhibition.likes}} people like this!
 <br><br>
       {% for com in exhibition.comment_set.all %}
-      
     {{com.name}} says {{com.comment}} on {{com.created}}
     <br>
-        <!-- <a href = '/artists/{{com.id}}/edit_comment'>Edit</a> -->
-        <a href = '/artists/{{com.id}}/delete_comment'>Delete</a>
+        <a href = '/artists/{{com.id}}/delete_comment/'>Delete</a>
     
     <br>
-    {% endfor %}
-{% endblock %}
+      {% endfor %}
+
+      
+    </body>
+</html>
