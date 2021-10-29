@@ -13,7 +13,7 @@ Welcome to the Virtual Art Gallery, where artists can create exhibitions to show
 ![screenshot5](https://i.imgur.com/z6fouz7.png)
 
 ### Technologies Used
-- HTML/CSS, Django, PostgreSQL
+- HTML/CSS, JavaScript, Django, PostgreSQL
 
 ### Getting Started 
 
