@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Exhibition Create</h1>
-	<form method = 'POST' action = '/exhibition/{{exhibition.id}}/update/'>
+<h3>Update Exhibition</h3>
+<div class="container form">
+	<form class="update-ex" method = 'POST' action = '/exhibition/{{exhibition.id}}/update/'>
 	    {% csrf_token %}   
 	    <label for = 'exhibition_title'>Title:</label>
 	    <input name = 'title' value = '{{exhibition.title}}'>
-	    <label for = 'artist_name'>Artist_Name:</label>
+	    <label for = 'artist_name'>Artist Name:</label>
 	    <input name = 'artist_name' value = '{{exhibition.artist_name}}'>
 	    <label for = 'description' >Description</label>
 	    <input name = 'description' value = '{{exhibition.description}}'>
@@ -14,4 +15,5 @@
 	    <input name = 'date' id = 'date' value = "{{exhibition.date|date:'Y-m-d'}}" type = 'date' >
 	    <button type = 'submit'>Update</button>
 	</form>
+</div>
 {% endblock %}
