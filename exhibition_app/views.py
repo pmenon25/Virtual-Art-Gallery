@@ -1,6 +1,6 @@
 from .forms import ArtForm
 from django.shortcuts import render, redirect
-from exhibition_app.models import Exhibition, Art, Comment, Like
+from exhibition_app.models import Exhibition, Art, Comment 
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import ListView
@@ -23,15 +23,17 @@ def artist(request):
 
 def profile(request,exhibition_id):
   exhibition = Exhibition.objects.get(id=exhibition_id)
-  art = Art.objects.all()
-  print('art:',art)
-  print(exhibition_id)
-  return render(request,'artistpage.html', {'art': art , 'exhibition':exhibition})
+  comment_form = CommentForm()
+  exhibition = Exhibition.objects.get(id=exhibition_id)
+  art = Art.objects.all().filter(exhibition_id=exhibition_id)
+  return render(request,'artistpage.html', {'art': art , 'exhibition':exhibition, 'comment_form': comment_form})
 
 # Exhibition view functions
 def exhibition(request):
   exhibition = Exhibition.objects.filter(user=request.user)
-  return render(request , 'exhibition/profile.html' , {'exhibition' : exhibition})
+  comment_form = CommentForm()
+  return render(request , 'exhibition/profile.html' , 
+  {'exhibition' : exhibition, 'comment_form': comment_form}, )
   
 def new(request):
   return render (request , 'exhibition/create.html')
@@ -87,23 +89,6 @@ def signup(request):
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
 
-#Comment view functions
-def create_comment(request, exhibition_id):
-  form = CommentForm(request.POST)
-  if form.is_valid():
-    new_comment = form.save(commit=False)
-    new_comment.exhibition_id = exhibition_id
-    new_comment.save()
-  return redirect('details', exhibition_id=exhibition_id)
-
-def delete_comment(request, comment_id):
-  delete = Comment.objects.get(id=comment_id)
-  delete.delete()
-  return redirect(f'/exhibition/{delete.exhibition.id}')
-
-def edit_comment(request, comment_id): 
-  result = Comment.objects.get(id=comment_id)
-  return render(request , 'comment/update.html' , {'comment':result})
 
 # Art views functions
 def add_art(request, exhibition_id):
@@ -145,4 +130,38 @@ def update_art(request , art_id):
   art.save()
   return redirect(f'/exhibition/{art.exhibition_id}')
 
+#Comment view functions
+def add_comment(request, exhibition_id):
+  form = CommentForm(request.POST)
+  if form.is_valid():
+    add = form.save(commit=False)
+    add.exhibition_id = exhibition_id
+    add.save()
+  return redirect(f'/artists/{exhibition_id}/profile/')
+
+def delete_comment(request, comment_id):
+  delete = Comment.objects.get(id=comment_id)
+  delete.delete()
+  return redirect(f'/artists/{delete.exhibition_id}/profile/')
+
+def edit_comment(request, comment_id): 
+  result = Comment.objects.get(id=comment_id)
+  return render(request , 'comment/update.html' , {'comment':result})
+
+def update_comment(request , comment_id):
+  
+  comment = Comment.objects.get(id=comment_id)
+  comment.name = request.POST['name']
+  comment.description = request.POST['description']
+  comment.exhibition_id = comment.exhibition_id
+  print(comment.exhibition_id )
+  comment.save()
+  return redirect(f'/artists/{comment_id}/profile/')
+
  
+#like views functions
+def add_like(request, exhibition_id): 
+  exhibition = Exhibition.objects.get(id=exhibition_id)
+  exhibition.likes +=1
+  exhibition.save()
+  return redirect(f'/artists/{exhibition_id}/profile/')
